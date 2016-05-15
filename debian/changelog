@@ -1,0 +1,5 @@
+ruby-zookeeper (1.4.11-1) trusty; urgency=medium
+
+  * Initial release
+
+ -- Neil Williams <neil@reddit.com>  Sun, 15 May 2016 06:13:00 +0000

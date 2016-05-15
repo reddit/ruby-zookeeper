@@ -1,0 +1,17 @@
+Source: ruby-zookeeper
+Section: ruby
+Priority: optional
+Maintainer: Neil Williams <neil@reddit.com>
+Build-Depends: debhelper (>= 7.0.50~), gem2deb (>= 0.6.1~)
+Standards-Version: 3.9.4
+Homepage: https://github.com/zk-ruby/zookeeper
+XS-Ruby-Versions: all
+
+Package: ruby-zookeeper
+Architecture: any
+XB-Ruby-Versions: ${ruby:Versions}
+Depends: ${shlibs:Depends}, ${misc:Depends}, ruby, libzookeeper-mt2, libzookeeper-st2
+Description: Apache ZooKeeper driver for Rubies
+ A low-level multi-Ruby wrapper around the ZooKeeper API bindings.
+ .
+ This library uses version 3.4.5 of zookeeper bindings.
