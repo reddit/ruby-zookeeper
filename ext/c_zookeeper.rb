@@ -5,7 +5,7 @@ Zookeeper.require_lib(
   'zookeeper/exceptions' # zookeeper_c depends on exceptions defined in here
 )
 
-Zookeeper.require_root 'ext/zookeeper_c'
+require 'zookeeper_c'
 
 # require File.expand_path('../zookeeper_c', __FILE__)
 

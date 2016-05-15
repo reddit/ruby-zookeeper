@@ -7,23 +7,21 @@ require 'logger'
 require 'benchmark'
 
 module Zookeeper
-  ZOOKEEPER_ROOT = File.expand_path('../..', __FILE__)
-
   # require a path relative to the lib directory
   # this is to avoid monkeying explicitly with $LOAD_PATH
   #
   # @private
   def self.require_lib(*relpaths)
     relpaths.each do |relpath|
-      require File.join(ZOOKEEPER_ROOT, 'lib', relpath)
+      require_relative relpath
     end
   end
 
-  # require a path that's relative to ZOOKEEPER_ROOT
+  # require a path that's relative to the package root
   # @private
   def self.require_root(*relpaths)
     relpaths.each do |relpath|
-      require File.join(ZOOKEEPER_ROOT, relpath)
+      require_relative File.join('zookeeper', relpath)
     end
   end
 end
