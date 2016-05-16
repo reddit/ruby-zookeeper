@@ -1,3 +1,9 @@
+ruby-zookeeper (1.4.11-2) trusty; urgency=medium
+
+  * fix issues with "require" and funky relative paths
+
+ -- Neil Williams <neil@reddit.com>  Sun, 15 May 2016 22:34:20 -0700
+
 ruby-zookeeper (1.4.11-1) trusty; urgency=medium
 
   * Initial release

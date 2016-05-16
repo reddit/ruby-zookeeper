@@ -1,0 +1,62 @@
+From: Neil Williams <neil@reddit.com>
+Date: Sun, 15 May 2016 15:19:21 -0700
+Subject: Use standard require + require_relative
+
+The require_lib stuff is not finding the right paths in a debianized
+install of the gem. Ruby's built-in require_relative does work. The
+home-grown solution causing issues was done in 1661598 to remove a
+compatibility dependency. Since we're not dealing with rubies less than
+1.9, we can safely ditch it.
+
+Additionally, the C extension is installed in an arch-dependent location
+in debian. We can't rely on relative paths to find it, so we just use
+the regular 'require' which will know where to go.
+---
+ ext/c_zookeeper.rb | 2 +-
+ lib/zookeeper.rb   | 8 +++-----
+ 2 files changed, 4 insertions(+), 6 deletions(-)
+
+diff --git a/ext/c_zookeeper.rb b/ext/c_zookeeper.rb
+index 56d09d6..85b0d95 100644
+--- a/ext/c_zookeeper.rb
++++ b/ext/c_zookeeper.rb
+@@ -5,7 +5,7 @@ Zookeeper.require_lib(
+   'zookeeper/exceptions' # zookeeper_c depends on exceptions defined in here
+ )
+ 
+-Zookeeper.require_root 'ext/zookeeper_c'
++require 'zookeeper_c'
+ 
+ # require File.expand_path('../zookeeper_c', __FILE__)
+ 
+diff --git a/lib/zookeeper.rb b/lib/zookeeper.rb
+index c8703b6..da68b77 100644
+--- a/lib/zookeeper.rb
++++ b/lib/zookeeper.rb
+@@ -7,23 +7,21 @@ require 'logger'
+ require 'benchmark'
+ 
+ module Zookeeper
+-  ZOOKEEPER_ROOT = File.expand_path('../..', __FILE__)
+-
+   # require a path relative to the lib directory
+   # this is to avoid monkeying explicitly with $LOAD_PATH
+   #
+   # @private
+   def self.require_lib(*relpaths)
+     relpaths.each do |relpath|
+-      require File.join(ZOOKEEPER_ROOT, 'lib', relpath)
++      require_relative relpath
+     end
+   end
+ 
+-  # require a path that's relative to ZOOKEEPER_ROOT
++  # require a path that's relative to the package root
+   # @private
+   def self.require_root(*relpaths)
+     relpaths.each do |relpath|
+-      require File.join(ZOOKEEPER_ROOT, relpath)
++      require_relative File.join('zookeeper', relpath)
+     end
+   end
+ end

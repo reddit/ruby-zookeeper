@@ -2,3 +2,8 @@
 
 %:
 	dh $@ --buildsystem=ruby --with ruby
+
+override_dh_auto_install:
+	dh_ruby --install
+	mkdir debian/ruby-zookeeper/usr/lib/ruby/vendor_ruby/zookeeper/ext
+	cp ext/c_zookeeper.rb ext/zookeeper_base.rb debian/ruby-zookeeper/usr/lib/ruby/vendor_ruby/zookeeper/ext/
