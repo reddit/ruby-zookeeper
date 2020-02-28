@@ -1,3 +1,9 @@
+ruby-zookeeper (1.4.11-2hny~bionic2) bionic; urgency=medium
+
+  * Includes 80a88e3 from upstream to fix arm ftbfs
+
+ -- Liz Fong-Jones <lizf@honeycomb.io>  Thu, 27 Feb 2020 22:47:53 -0500
+
 ruby-zookeeper (1.4.11-2hny~bionic1) bionic; urgency=medium
 
   * Forward port for Ubuntu bionic, including new archs
