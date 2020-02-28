@@ -1,0 +1,12 @@
+diff --git a/ext/extconf.rb b/ext/extconf.rb
+index d7c3fc9..04deb22 100644
+--- a/ext/extconf.rb
++++ b/ext/extconf.rb
+@@ -69,6 +69,7 @@ Dir.chdir(HERE) do
+     FileUtils.rm_f(Dir['**/._*'].select{|p| test(?f, p)})
+ 
+     Dir.chdir(BUNDLE_PATH) do
++      FileUtils.cp(%w(/usr/share/misc/config.sub /usr/share/misc/config.guess), ".")
+       configure = "./configure --prefix=#{HERE} --with-pic --without-cppunit --disable-dependency-tracking #{$EXTRA_CONF} 2>&1"
+       configure = "env CFLAGS='#{DEBUG_CFLAGS}' #{configure}" if ZK_DEBUG
+ 

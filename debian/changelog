@@ -1,3 +1,9 @@
+ruby-zookeeper (1.4.11-2hny~bionic1) bionic; urgency=medium
+
+  * Forward port for Ubuntu bionic, including new archs
+
+ -- Liz Fong-Jones <lizf@honeycomb.io>  Thu, 27 Feb 2020 20:22:02 -0600
+
 ruby-zookeeper (1.4.11-2) trusty; urgency=medium
 
   * fix issues with "require" and funky relative paths
