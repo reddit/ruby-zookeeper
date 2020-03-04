@@ -2,7 +2,7 @@ Source: ruby-zookeeper
 Section: ruby
 Priority: optional
 Maintainer: Neil Williams <neil@reddit.com>
-Build-Depends: debhelper (>= 7.0.50~), gem2deb (>= 0.6.1~)
+Build-Depends: debhelper (>= 7.0.50~), gem2deb (>= 0.6.1~), autotools-dev
 Standards-Version: 3.9.4
 Homepage: https://github.com/zk-ruby/zookeeper
 XS-Ruby-Versions: all
